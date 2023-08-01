@@ -14,9 +14,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return true }
+        let profileViewController = ProfileModuleConfigurator().configure()
+
         self.window = UIWindow(windowScene: windowScene)
-        self.window?.rootViewController = ViewController()
+        self.window?.rootViewController = profileViewController
         self.window?.makeKeyAndVisible()
+
         return true
     }
 }
