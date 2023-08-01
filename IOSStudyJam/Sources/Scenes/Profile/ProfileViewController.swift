@@ -15,7 +15,7 @@ final class ProfileViewController: UIViewController, ProfileViewInput {
 
     // MARK: - Properties
 
-    weak var output: ProfileViewOutput?
+    var output: ProfileViewOutput?
     private lazy var customView: ProfileView = {
         let customView = ProfileView()
         return customView
@@ -25,5 +25,15 @@ final class ProfileViewController: UIViewController, ProfileViewInput {
 
     override func loadView() {
         self.view = customView
+    }
+
+    override func viewDidLoad() {
+        initialSetup()
+    }
+
+    // MARK: - Settings
+
+    private func initialSetup() {
+        title = "Профиль"
     }
 }
