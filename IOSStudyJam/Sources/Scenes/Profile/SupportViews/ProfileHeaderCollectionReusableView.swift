@@ -13,7 +13,7 @@ class ProfileHeaderCollectionReusableView: UICollectionReusableView {
 
     func configure(with isEditMode: Bool) {
         editButton.setImage(
-            UIImage(named: isEditMode ? "pencil" : "checkmark"),
+            UIImage(named: isEditMode ? "checkmark" : "pencil"),
             for: .normal
         )
     }
