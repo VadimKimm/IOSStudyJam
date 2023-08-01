@@ -13,17 +13,12 @@ final class TagCollectionViewCell: UICollectionViewCell {
 
     func configure(with item: Skill, isEditing: Bool) {
         titleLabel.text = item.name
-
-        if isEditing {
-            addDeleteButton()
-        } else {
-            removeDeleteButton()
-        }
+        deleteButton.isHidden = !isEditing
     }
 
     func configure(with text: String) {
         titleLabel.text = text
-        removeDeleteButton()
+        deleteButton.isHidden = true
     }
 
     //MARK: - Properties
@@ -60,6 +55,11 @@ final class TagCollectionViewCell: UICollectionViewCell {
         setupView()
     }
 
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        self.deleteButton.removeTarget(nil, action: nil, for: .allEvents)
+    }
+
     // MARK: - Private functions
 
     private func setupHierarchy() {
@@ -76,6 +76,12 @@ final class TagCollectionViewCell: UICollectionViewCell {
             stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Metrics.sideOffset),
             stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -Metrics.topOffset)
         ])
+
+        deleteButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            deleteButton.widthAnchor.constraint(equalToConstant: Metrics.deleteButtonWidth),
+            deleteButton.heightAnchor.constraint(equalToConstant: Metrics.deleteButtonWidth)
+        ])
     }
 
     private func setupView() {
@@ -84,23 +90,8 @@ final class TagCollectionViewCell: UICollectionViewCell {
 
         titleLabel.font = .systemFont(ofSize: 14, weight: .light)
         titleLabel.textColor = Colors.black.color
-    }
-
-    private func addDeleteButton() {
-        stackView.addArrangedSubview(deleteButton)
-
-        deleteButton.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            deleteButton.widthAnchor.constraint(equalToConstant: Metrics.deleteButtonWidth),
-            deleteButton.heightAnchor.constraint(equalToConstant: Metrics.deleteButtonWidth)
-        ])
 
         deleteButton.setImage(UIImage(named: "delete"), for: .normal)
-    }
-
-    private func removeDeleteButton() {
-        guard deleteButton.isDescendant(of: stackView) else { return }
-        deleteButton.removeFromSuperview()
     }
 }
 
