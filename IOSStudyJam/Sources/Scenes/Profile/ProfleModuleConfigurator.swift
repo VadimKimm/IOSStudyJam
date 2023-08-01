@@ -11,13 +11,10 @@ final class ProfileModuleConfigurator {
 
     // MARK: Internal methods
 
-    func configure() -> ProfileViewController {
+    func configure(router: ProfileRouterInput) -> ProfileViewController {
         let view = ProfileViewController()
-        let presenter = ProfilePresenter()
-
-        presenter.view = view
+        let presenter = ProfilePresenter(view: view, router: router)
         view.output = presenter
-
         return view
     }
 }

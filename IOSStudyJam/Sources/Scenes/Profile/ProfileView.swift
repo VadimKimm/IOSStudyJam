@@ -11,20 +11,21 @@ final class ProfileView: UIView {
 
     // MARK: - Views
 
-    private lazy var scrollView: UIScrollView = {
-        let scroll = UIScrollView()
-        return scroll
-    }()
+    lazy var collectionView: UICollectionView = {
+        let layout = TagFlowLayout()
+        layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+        layout.scrollDirection = .vertical
+        layout.sectionInset = UIEdgeInsets(
+            top: Metrics.sectionTopInset,
+            left: Metrics.sectionSideInset,
+            bottom: Metrics.sectionBottomInset,
+            right: Metrics.sectionSideInset
+        )
 
-    private lazy var stackView: UIStackView = {
-        let stack = UIStackView()
-        stack.axis = .vertical
-        stack.alignment = .center
-        stack.distribution = .fill
-        return stack
-    }()
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
 
-    private let profileInfoView = ProfileInfoView()
+        return collectionView
+    }()
 
     // MARK: - Settings
 
@@ -46,30 +47,22 @@ final class ProfileView: UIView {
     // MARK: - Private functions
 
     private func setupHierarchy() {
-        addSubview(scrollView)
-        scrollView.addSubview(stackView)
-        stackView.addArrangedSubview(profileInfoView)
+        addSubview(collectionView)
     }
 
     private func setupLayout() {
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            scrollView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: Metrics.scrollViewTopOffset),
-            scrollView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: Metrics.scrollViewSideOffset),
-            scrollView.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor, constant: -Metrics.scrollViewSideOffset),
-            scrollView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)
-        ])
-
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: scrollView.topAnchor),
-            stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
-            stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor)
+            collectionView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: Metrics.collectionViewTopOffset),
+            collectionView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
+            collectionView.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
 
     private func setupView() {
         backgroundColor = Colors.gray.color
+        collectionView.backgroundColor = Colors.white.color
     }
 }
 
@@ -77,8 +70,9 @@ final class ProfileView: UIView {
 
 extension ProfileView {
     enum Metrics {
-        static let scrollViewTopOffset: CGFloat = 24
-        static let scrollViewSideOffset: CGFloat = 16
-        static let userImageWidth: CGFloat = 120
+        static let collectionViewTopOffset: CGFloat = 24
+        static let sectionTopInset: CGFloat = 20
+        static let sectionSideInset: CGFloat = 16
+        static let sectionBottomInset: CGFloat = 24
     }
 }
