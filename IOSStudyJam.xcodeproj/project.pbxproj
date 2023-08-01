@@ -52,13 +52,45 @@
 		DD4B91AF2A78E76400F73A7E /* IOSStudyJam */ = {
 			isa = PBXGroup;
 			children = (
-				DD4B91B02A78E76400F73A7E /* AppDelegate.swift */,
-				DD4B91B42A78E76400F73A7E /* ViewController.swift */,
-				DD4B91B92A78E76500F73A7E /* Assets.xcassets */,
-				DD4B91BB2A78E76500F73A7E /* LaunchScreen.storyboard */,
-				DD4B91BE2A78E76500F73A7E /* Info.plist */,
+				DD4B91C52A78F23800F73A7E /* Sources */,
+				DD4B91C42A78F1C900F73A7E /* Resources */,
 			);
 			path = IOSStudyJam;
+			sourceTree = "<group>";
+		};
+		DD4B91C42A78F1C900F73A7E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				DD4B91BE2A78E76500F73A7E /* Info.plist */,
+				DD4B91BB2A78E76500F73A7E /* LaunchScreen.storyboard */,
+				DD4B91B92A78E76500F73A7E /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		DD4B91C52A78F23800F73A7E /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				DD4B91C72A78F29F00F73A7E /* Application */,
+				DD4B91C62A78F29400F73A7E /* Scenes */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		DD4B91C62A78F29400F73A7E /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				DD4B91B42A78E76400F73A7E /* ViewController.swift */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		DD4B91C72A78F29F00F73A7E /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				DD4B91B02A78E76400F73A7E /* AppDelegate.swift */,
+			);
+			path = Application;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -273,7 +305,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7CZSM4DJ6N;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = IOSStudyJam/Info.plist;
+				INFOPLIST_FILE = IOSStudyJam/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
@@ -301,7 +333,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7CZSM4DJ6N;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = IOSStudyJam/Info.plist;
+				INFOPLIST_FILE = IOSStudyJam/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
