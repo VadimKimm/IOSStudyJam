@@ -40,6 +40,7 @@ final class ProfilePresenter: ProfileViewOutput {
     }
 
     func removeSkill(at index: Int) {
+        guard skills.count > index else { return }
         skills.remove(at: index)
         view?.reload(with: skills)
     }

@@ -137,7 +137,8 @@ extension ProfileCollectionViewAdapter: UICollectionViewDataSource {
             header.editButton.addAction(UIAction(handler: { [weak self] _ in
                 guard let sself = self else { return }
                 sself.isEditMode.toggle()
-                sself.output.didTapEditButton()
+                sself.collectionView.reloadData()
+//                sself.output.didTapEditButton()
             }), for: .touchUpInside)
 
             return header
